@@ -6,10 +6,12 @@ class PersonalPage:
     def __init__(self,
                  name,
                  google_track_url,
-                 links, ):
+                 links,
+                 profile_image,):
         self.name = name
         self.google_track_url = google_track_url
         self.links = links
+        self.profile_image = profile_image
 
     def get_html(self):
         doc, tag, text = Doc().tagtext()
@@ -69,13 +71,12 @@ class PersonalPage:
 
     def _get_profile_image(self, tag):
         with tag('td', style="padding:2.5%;width:40%;max-width:40%"):
-            with tag('a', href="data/sebastian_cepeda.jpg"):
-                author_image = "data/sebastian_cepeda.jpg"
-                with tag('a', href=f"{author_image}"):
+            with tag('a', href=self.profile_image):
+                with tag('a', href=f"{self.profile_image}"):
                     with tag('img',
                              style="width:100%;max-width:100%",
                              alt="Profile image",
-                             src=f"{author_image}",
+                             src=f"{self.profile_image}",
                              klass="hoverZoomLink"):
                         pass
 
@@ -221,6 +222,7 @@ if __name__ == "__main__":
     p = PersonalPage(name="Sebastian Cepeda",
                      google_track_url="https://www.googletagmanager.com/gtag/js?id=UA-153089899-1",
                      links=links,
+                     profile_image="data/sebastian_cepeda.jpg",
                      )
     html = p.get_html()
     with open("index.html", "w") as text_file:
