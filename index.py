@@ -165,7 +165,7 @@ class PersonalPage:
                         doc.stag('br')
                         with tag('p',
                                  style="text-align:right;font-size:small;"):
-                            text("Code of this site is ")
+                            text("Code of this page is ")
                             with tag('a',
                                      href="https://github.com/sebastiancepeda/sebastiancepeda.github.io"):
                                 text("in github")
