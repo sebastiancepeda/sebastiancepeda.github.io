@@ -165,11 +165,11 @@ class PersonalPage:
                         doc.stag('br')
                         with tag('p',
                                  style="text-align:right;font-size:small;"):
-                            text("Code of this site ")
+                            text("Code of this site is ")
                             with tag('a',
                                      href="https://github.com/sebastiancepeda/sebastiancepeda.github.io"):
-                                text("in github ")
-                            text("Based on ")
+                                text("in github")
+                            text(", based on ")
                             with tag('a', href="https://jonbarron.info/"):
                                 text("Jon Barron's site")
                             with tag('a',
