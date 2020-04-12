@@ -56,9 +56,9 @@ class PersonalPage:
                 with tag('name'):
                     text(self.name)
             with tag('p'):
-                text("I work as a Data Scientist at ")
-                with tag('a', href="https://www.cencosud.com/"):
-                    text("Cencosud")
+                text("I work as a Senior Data Scientist at ")
+                with tag('a', href="http://consorcio.cl/"):
+                    text("Consorcio")
             with tag('p'):
                 text(
                     "I did my bachelors and MSc in electrical engineering in ")
@@ -66,7 +66,7 @@ class PersonalPage:
                     text("Universidad de Chile")
                 text(". I have worked in image segmentation, computer vision")
                 text(", LIDAR processing/point cloud segmentation,")
-                text(" time series forecasting.")
+                text(" time series forecasting, recommender systems.")
             self._get_links(tag, text)
 
     def _get_profile_image(self, tag):
