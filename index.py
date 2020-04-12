@@ -66,7 +66,7 @@ class PersonalPage:
                     text("Universidad de Chile")
                 text(". I have worked in image segmentation, computer vision")
                 text(", LIDAR processing/point cloud segmentation,")
-                text(" time series forecasting, recommender systems.")
+                text(" time series forecasting, recommender systems. ")
             self._get_links(tag, text)
 
     def _get_profile_image(self, tag):
