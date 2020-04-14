@@ -113,45 +113,52 @@ class PersonalPage:
                  "software development.")
 
     def _get_projects(self, doc, tag, text):
-        with tag('table',
-                 style="width:100%;border:0px;border-spacing:0px;border"
-                       "-collapse:separate;margin-right:auto;margin-left"
-                       ":auto;"):
+        with tag('table', style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"):
             with tag('tbody'):
                 self._get_bvs_project(doc, tag, text)
+                self._get_vp_project(doc, tag, text)
 
     def _get_bvs_project(self, doc, tag, text):
         project_id = "bvs"
-        with tag('tr', onmouseout=f"{project_id}_stop()",
-                 onmouseover=f"{project_id}_start()"):
-            with tag('td', style="padding:20px;width:25%;"
-                                 "vertical-align:middle"):
-                with tag('div', klass="one"):
-                    with tag('div', klass="two", id=project_id):
-                        with tag('img',
-                                 src='data/blood_vessels_segmentation_after.png'):
+        with tag('tr', onmouseout=f"{project_id}_stop()", onmouseover=f"{project_id}_start()"):
+            with tag('td', style="padding:20px;width:40%;vertical-align:middle"):
+                with tag('center'):
+                    with tag('div', klass="one"):
+                        with tag('div', klass="two", id=project_id):
+                            with tag('img', src='data/blood_vessels_segmentation_after.png'):
+                                pass
+                        with tag('img', src='data/blood_vessels_segmentation_before.png'):
                             pass
-                    with tag('img',
-                             src='data/blood_vessels_segmentation_before.png'):
-                        pass
-                self._get_mouse_over_js(project_id, tag, text)
-            with tag('td',
-                     style="padding:20px;width:75%;vertical-align:middle"):
-                with tag('a',
-                         href="http://repositorio.uchile.cl/handle/2250/138129"):
+                    self._get_mouse_over_js(project_id, tag, text)
+            with tag('td', style="padding:20px;width:60%;vertical-align:middle"):
+                with tag('a', href="http://repositorio.uchile.cl/handle/2250/138129"):
                     with tag('b'):
                         text("Blood vessels segmentation in retinal images")
                 doc.stag('br')
                 doc.stag('br')
-
+    
+    def _get_vp_project(self, doc, tag, text):
+        project_id = "vp"
+        with tag('tr', onmouseout=f"{project_id}_stop()", onmouseover=f"{project_id}_start()"):
+            with tag('td', style="padding:20px;width:40%;vertical-align:middle"):
+                url = "https://www.youtube.com/embed/LhEVJsWVisE"
+                with tag('iframe',  width="100%", height="100%", src=f'{url}', frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"):
+                    pass
+            with tag('td', style="padding:20px;width:60%;vertical-align:middle"):
+                with tag('p', style="text-align:left"):
+                    text("Vanishing point tracking")
+                with tag('p', style="text-align:left"):
+                    with tag('a', href="https://github.com/sebastiancepeda/vanpo"):
+                        text("code")
+                doc.stag('br')
+                doc.stag('br')
+    
     def _get_mouse_over_js(self, project_id, tag, text):
         with tag('script', type="text/javascript"):
             txt = f"function {project_id}_start()" \
-                  f"{{document.getElementById('{project_id}')." \
-                  f"style.opacity = '1';}} " \
+                  f"{{document.getElementById('{project_id}').style.opacity = '1';}} " \
                   f"function {project_id}_stop()" \
-                  f"{{document.getElementById('{project_id}').style" \
-                  f".opacity = '0';}}" \
+                  f"{{document.getElementById('{project_id}').style.opacity = '0';}}" \
                   f"{project_id}_stop()"
             text(txt)
 
