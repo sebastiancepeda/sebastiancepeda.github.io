@@ -57,12 +57,12 @@ class PersonalPage:
                     text(self.name)
             with tag('p'):
                 text("I work as a Senior Data Scientist at ")
-                with tag('a', href="http://consorcio.cl/"):
+                with tag('a', href="http://consorcio.cl/", target="_blank"):
                     text("Consorcio")
             with tag('p'):
                 text(
                     "I did my bachelors and MSc in electrical engineering in ")
-                with tag('a', href="http://ingenieria.uchile.cl/"):
+                with tag('a', href="http://ingenieria.uchile.cl/", target="_blank"):
                     text("Universidad de Chile")
                 text(". I have worked in image segmentation, computer vision")
                 text(", LIDAR processing/point cloud segmentation,")
@@ -71,13 +71,9 @@ class PersonalPage:
 
     def _get_profile_image(self, tag):
         with tag('td', style="padding:2.5%;width:40%;max-width:40%"):
-            with tag('a', href=self.profile_image):
-                with tag('a', href=f"{self.profile_image}"):
-                    with tag('img',
-                             style="width:100%;max-width:100%",
-                             alt="Profile image",
-                             src=f"{self.profile_image}",
-                             klass="hoverZoomLink"):
+            with tag('a', href=self.profile_image, target="_blank"):
+                with tag('a', href=f"{self.profile_image}", target="_blank"):
+                    with tag('img', style="width:100%;max-width:100%", alt="Profile image", src=f"{self.profile_image}", klass="hoverZoomLink"):
                         pass
 
     def _get_links(self, tag, text):
@@ -85,12 +81,12 @@ class PersonalPage:
         with tag('p', style="text-align:center"):
             for i in range(len(self.links) - 1):
                 name, url = self.links[i]
-                with tag('a', href=url):
+                with tag('a', href=url, target="_blank"):
                     text(name)
                 text(slatch)
             if len(self.links) > 1:
                 name, url = self.links[-1]
-                with tag('a', href=url):
+                with tag('a', href=url, target="_blank"):
                     text(name)
 
     def _get_interests(self, tag, text):
@@ -131,7 +127,7 @@ class PersonalPage:
                             pass
                     self._get_mouse_over_js(project_id, tag, text)
             with tag('td', style="padding:20px;width:60%;vertical-align:middle"):
-                with tag('a', href="http://repositorio.uchile.cl/handle/2250/138129"):
+                with tag('a', href="http://repositorio.uchile.cl/handle/2250/138129", target="_blank"):
                     with tag('b'):
                         text("Blood vessels segmentation in retinal images")
                 doc.stag('br')
@@ -148,7 +144,7 @@ class PersonalPage:
                 with tag('p', style="text-align:left"):
                     text("Vanishing point tracking")
                 with tag('p', style="text-align:left"):
-                    with tag('a', href="https://github.com/sebastiancepeda/vanpo"):
+                    with tag('a', href="https://github.com/sebastiancepeda/vanpo", target="_blank"):
                         text("code")
                 doc.stag('br')
                 doc.stag('br')
@@ -171,24 +167,20 @@ class PersonalPage:
                 with tag('tr'):
                     with tag('td', style="padding:0px"):
                         doc.stag('br')
-                        with tag('p',
-                                 style="text-align:right;font-size:small;"):
+                        with tag('p', style="text-align:right;font-size:small;"):
                             text("Code of this page is ")
-                            with tag('a',
-                                     href="https://github.com/sebastiancepeda/sebastiancepeda.github.io"):
+                            with tag('a', href="https://github.com/sebastiancepeda/sebastiancepeda.github.io", target="_blank"):
                                 text("in github")
                             text(", based on ")
-                            with tag('a', href="https://jonbarron.info/"):
+                            with tag('a', href="https://jonbarron.info/", target="_blank"):
                                 text("Jon Barron's site")
-                            with tag('a',
-                                     href="https://github.com/jonbarron/jonbarron_website"):
+                            with tag('a', href="https://github.com/jonbarron/jonbarron_website", target="_blank"):
                                 text("(source code)")
                         doc.stag('br')
 
     def _generate_head(self, doc, tag, text):
         with tag('head'):
-            doc.asis(
-                '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">')
+            doc.asis('<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">')
             doc.asis(f'<script async src="{self.google_track_url}"></script>')
             with tag('script'):
                 text(self._get_google_tracker_js())
@@ -196,14 +188,11 @@ class PersonalPage:
                 text(self.name)
             with tag('meta', name="author", content=self.name):
                 pass
-            with tag('meta', name="viewport",
-                     content="width=device-width, initial-scale=1"):
+            with tag('meta', name="viewport", content="width=device-width, initial-scale=1"):
                 pass
-            with tag('link', rel="stylesheet", type="text/css",
-                     href="stylesheet.css"):
+            with tag('link', rel="stylesheet", type="text/css", href="stylesheet.css"):
                 pass
-            with tag('link', rel="icon", type="image/png",
-                     href="images/seal_icon.png"):
+            with tag('link', rel="icon", type="image/png", href="images/seal_icon.png"):
                 pass
 
     def _get_google_tracker_js(self):
