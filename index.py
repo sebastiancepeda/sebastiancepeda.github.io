@@ -210,7 +210,7 @@ if __name__ == "__main__":
     links = [
         ("Email", "mailto:sebastian.cepeda.fuentealba@gmail.com"),
         ('CV',
-         "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1pmh6-pwJh98fTAS6WTCZ4L4SEyRNJc3GHv0oRNhewG8/export?format=pdf"),
+         "data/cv_sebastian_cepeda.pdf"),
         ('LinkedIn', "https://www.linkedin.com/in/sebastiancepeda/"),
         ('Google Scholar',
          "https://scholar.google.com/citations?hl=en&user=1ArDfoUAAAAJ"),
